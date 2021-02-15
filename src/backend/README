@@ -1,0 +1,49 @@
+Project schema -> {
+    _id: unique project id
+    username: username of the user
+    title: title of the project
+    createdAt: UTC Timestamp
+    listOfTodos: Array containing ids of all the todos in the project
+}
+
+Todos schema -> {
+    _id: unique id of the todo
+    projectId: id of the project to which todo belongs
+    desc: description of the todo
+    status: 0/1 status of the todo
+    createdAt: UTC Timestamp
+    updatedAt: UTC Timestamp
+}
+
+Routes
+
+Projects
+    GET -> api/projects/?username=<username> 
+    Returns an array contating project objects containing all projects of the user
+
+    POST -> api/projects?username=<username>
+        body = {
+            title: Title Of the project
+        }
+    Creates a new project
+
+    PATCH -> api/projects?id=<projectId>
+        body = {
+            title:new title of the project
+        }
+    Edits the project title
+
+    DELETE -> api/projects?id=<projectId>
+    deletes the project
+
+Todos
+    GET -> api/todos/?projectId=<unique id of project>
+    Returns an array contating todos object of the particular project
+
+    POST -> api/todos/?id=<projectid>
+        body = {
+            desc: description of the todo
+        }
+    Creates a new todo inside the given project
+
+    PATCH -> 
